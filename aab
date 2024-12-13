@@ -1,0 +1,174 @@
+2.
+class Stack{
+  int top = -1;
+  private int MAX_SIZE = 10;
+  int a[] = new int[MAX_SIZE];
+
+  void push(int element){
+    if(top==MAX_SIZE-1) 
+      { 
+       System.out.println("STACK OVERFLOW"); 
+       System.exit(1); 
+      } 
+    a[++top] = element;
+  }
+  int pop(){
+    return a[top--];
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Stack st = new Stack();
+    st.push(10);
+    st.push(20);
+    st.push(30);
+    st.push(40);
+    st.push(50);
+    st.push(60);
+
+    System.out.println("Popped Element : "+ st.pop());
+    System.out.println("Popped Element : "+ st.pop());
+    for(int i = 0; i <= st.top; i++){
+      System.out.println(st.a[i]);
+    }
+  }
+}
+------------------------------------------------------
+3.
+class Employee{
+  String id;
+  String name;
+  double salary;
+
+  double raiseSalary(double percent){
+    return salary + salary * (percent / 100);
+  }
+
+  public void display(){
+    System.out.println("Name of Employee : " + name);
+    System.out.println("Id of Employee : " + id);
+    System.out.println("Salary of Employee : " + salary);
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Employee e = new Employee();
+    e.name = "Suyash";
+    e.id = "suyash3312";
+    e.salary = 100000;
+
+    e.display();
+      System.out.println("Salary after raising : " + e.raiseSalary(10));
+  }
+}
+-------------------------------------------------------------------------
+5.
+class Shape{
+  public void draw(){
+    System.out.println("Drawing a Shape");
+  }
+  public void erase(){
+    System.out.println("Erasing a Shape");
+  }
+}
+
+class Circle extends Shape{
+  public void draw(){
+    System.out.println("Drawing a Circle");
+  }
+  public void erase(){
+    System.out.println("Erasing a Circle");
+  }
+}
+
+class Triangle extends Shape{
+  public void draw(){
+    System.out.println("Drawing a Triangle");
+  }
+  public void erase(){
+    System.out.println("Erasing a Triangle");
+  }
+}
+
+class Square extends Shape{
+  public void draw(){
+    System.out.println("Drawing a Square");
+  }
+  public void erase(){
+    System.out.println("Erasing a Square");
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    Circle c = new Circle();
+    Triangle t = new Triangle();
+    Square s = new Square();
+
+    System.out.println("Using Circle object : ");
+    c.draw();
+    c.erase();
+    System.out.println("Using Triangle object : ");
+    t.draw();
+    t.erase();
+    System.out.println("Using Square object : ");
+    s.draw();
+    s.erase();
+  }
+}
+----------------------------------------------------------------
+8.
+class OuterClass{
+  void display(){
+    System.out.println("This is Outer class");
+  }
+
+  class InnerClass{
+    void display(){
+      System.out.println("This is Inner Class");
+    }
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    OuterClass outer = new OuterClass();
+    outer.display();
+    OuterClass .InnerClass inner = outer.new InnerClass();
+    inner.display();
+  }
+}
+-----------------------------------------------------------------------
+9.
+
+10.
+
+11.
+class MyThread implements Runnable{
+  public void run(){
+    for(int i = 0; i <= 5; i++){
+      System.out.println(Thread.currentThread().getName() + " i is :" + i);
+
+      try{
+        Thread.sleep(10);
+      }
+      catch(Exception e){
+        System.out.println(e.getMessage());
+      }
+    }
+  }
+}
+
+public class Main{
+  public static void main(String[] args){
+    MyThread myThread = new MyThread();
+    Thread t1 = new Thread(myThread);
+    Thread t2 = new Thread(myThread);
+    Thread t3 = new Thread(myThread);
+    t1.start();
+    t2.start();
+    t3.start();
+  }
+}
